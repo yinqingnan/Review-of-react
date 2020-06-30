@@ -8,8 +8,8 @@ import { Provider } from "mobx-react";
 import stores from "./store";
 ReactDOM.render(
     <Provider {...stores}>
-        <RouterConfig />
-    // </Provider>
+        <RouterConfig ></RouterConfig>
+     </Provider>
     ,document.getElementById("root")
 );
 

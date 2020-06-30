@@ -1,6 +1,6 @@
 // 引入组件
-import Login from '..//views/login/login.jsx'
-import home from '..//views/home/home.jsx'
+import Login from '@/views/login/login.jsx'
+import home from '@/views/home/home.jsx'
 
 
 
