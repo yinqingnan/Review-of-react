@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { Menu  } from "antd";
 import axios from 'axios'
 import {withRouter} from "react-router-dom";
-const { SubMenu } = Menu;
+
+import {observer, inject} from "mobx-react";
+@inject('stylemain')
+@observer
+
 class Menus extends Component {
   constructor(props) {
     super(props);
@@ -23,23 +27,24 @@ class Menus extends Component {
   }
   handleClick = (e) => {
     // console.log('click ', this.state.navList);
-    let key = e.key
-    let arr = this.state.navList
-    let newarr = []
-    var element = []
+    let key = e.key;
+    let arr = this.state.navList;
+    let newarr = [];
+    var element = [];
     arr.forEach((item,index) => {
-        newarr[index] = item
+        newarr[index] = item;
         newarr[index].children.forEach( el =>{
             element.push(el)
         } )
     });
     let newkey = element.filter(item => {
         return item.key === key
-    })
+    });
     // console.log('路由信息', newkey[0].path)
     this.props.history.push('/home/' + newkey[0].path)
 };
   renderMenu = (data) =>{
+      const { SubMenu } = Menu;
       return data.map((item,index) => {
         if (item.children) {
             return  <SubMenu key={item.key} title={item.title} >
@@ -50,15 +55,16 @@ class Menus extends Component {
             return <Menu.Item key={item.key}>{item.title}</Menu.Item>
         }
       })
-  }
+  };
   render() {
     return (
       <div style={{ width: 200 }}>
         <Menu
-            theme="dark"
+            theme={this.props.stylemain.MenuTheme}
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             mode="inline"
+           
             onClick={this.handleClick}
         >
             {this.state.MenuList}

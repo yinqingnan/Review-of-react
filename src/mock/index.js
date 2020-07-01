@@ -4,6 +4,7 @@ import Mock from 'mockjs'
 // 即可使用这两个mock文件
 import './login'
 import './Menulist'
+import './testdata'
 // 启动mock，timeout表示模拟的请求延迟
 
 Mock.setup({ timeout: '200-800' });

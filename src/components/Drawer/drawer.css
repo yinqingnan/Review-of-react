@@ -1,0 +1,24 @@
+.Menutheme{
+    display: flex;
+
+}
+.Menutheme>div{
+    width: 50%;
+    text-align: center;
+    position: relative;
+}
+.Menutheme>div>span{
+    position: absolute;
+    bottom: 20px;
+    right: 65px;
+    font-size: 22px;
+    color: green;
+    cursor: pointer;
+}
+.Menutheme>div>img{
+    cursor: pointer;
+}
+.setmain>li>h1{
+    font-size: 16px;
+    line-height: 1;
+}

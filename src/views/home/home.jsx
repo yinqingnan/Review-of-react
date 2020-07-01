@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import "./home.css";
-import { Layout } from "antd";
-import { Menus, Headers } from "../..//components/index.js";
+import {Layout, Menu} from "antd";
+import { Menus, Headers } from "../../components/index.js";
 import { Route } from "react-router-dom";
 // import { routes } from "/router/childrenroutes";
 import { routes } from "../../router/childrenroutes";
-
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-const { Header, Sider, Content } = Layout;
 
+import {observer, inject} from 'mobx-react'
+@inject('stylemain')
+@observer
 class home extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +23,11 @@ class home extends Component {
     });
   };
   render() {
+    const { Header, Sider, Content } = Layout;
     return (
       <div className="box">
         <Layout>
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+          <Sider trigger={null} collapsible collapsed={this.state.collapsed}  style={{background:this.props.stylemain.Menubackground}}>
             <h2 className="logo">LOGO</h2>
             <Menus />
           </Sider>
@@ -40,7 +42,7 @@ class home extends Component {
                   }
                 )}
                 <div>
-                  <h1>asdasdasd</h1>
+                  <h1></h1>
                   <div>
                     <Headers />
                   </div>

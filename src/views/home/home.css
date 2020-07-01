@@ -7,15 +7,14 @@
 }
 
 .logo {
-    height: 60px;
-    line-height: 60px;
+    height: 64px;
+    line-height: 64px;
     margin: 0;
     color: #fff;
     text-align: center;
 }
 
 .trigger {
-    color: #fff;
     font-size: 20px;
     margin-left: 16px;
     line-height: 64px;
@@ -34,4 +33,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+.ant-layout-header{
+    background: #e8eaed;
 }

@@ -23,14 +23,13 @@ class Login extends Component {
     };
   }
   onSubmit = (val) => {
-    console.log("Success:", val);
+    // console.log("Success:", val);
     axios
       .post("/userLogin/login", {
         username: val.username,
         password: val.password,
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data === "登录成功") {
           message.success("登录成功", 2);
           this.props.history.push('/home');
@@ -47,7 +46,9 @@ class Login extends Component {
   btnclick = (e) => {
     this.formRef.current.resetFields();
   };
-  render() {
+
+    
+    render() {
     return (
       <div className="box" style={this.state.bg}>
         <div className="Login">

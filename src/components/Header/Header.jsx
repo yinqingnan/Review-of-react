@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Avatar, Menu, Dropdown, Badge, message} from "antd";
+import {withRouter} from "react-router-dom";
 import "./Header.css";
 import {
     SettingOutlined,
@@ -34,6 +35,7 @@ class Header extends Component {
                 break;
             case '3':
                 message.error('暂无信息');
+                this.props.history.push('/login');
                 break;
             default:
                 break;
@@ -84,7 +86,7 @@ class Header extends Component {
                 trigger={["click"]}
             >
                 <SettingOutlined
-                    style={{color: "pink", cursor: "pointer", fontSize: '22px', marginLeft: '16px'}}
+                    style={{cursor: "pointer", fontSize: '22px', marginLeft: '16px'}}
                     onClick={(e) => e.preventDefault()}
                 >
                 </SettingOutlined>
@@ -94,6 +96,6 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
 
 
