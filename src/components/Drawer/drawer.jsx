@@ -15,7 +15,7 @@ class Drawers extends Component {
             isShow: true
         }
     }
-    
+
     handleChangeComplete=(color) => {
         this.setState({background: color.hex});
     };
@@ -42,16 +42,16 @@ class Drawers extends Component {
             default:
                 break;
         }
-        
+
     };
     handleClick = () => {
         this.setState({ displayColorPicker: !this.state.displayColorPicker })
     };
-    
+
     handleClose = () => {
         this.setState({ displayColorPicker: false })
     };
-    
+
     render() {
         const popover = {
             position: 'absolute',
@@ -74,8 +74,8 @@ class Drawers extends Component {
                     visible={this.props.stylemain.DrawerVisible}
                     width='400'
                 >
-                    
-                    
+
+
                     <ul className='setmain'>
                         <li>
                             <h1>
@@ -90,7 +90,6 @@ class Drawers extends Component {
                                 <div onClick={() => this.onswitch(2)}>
                                     <CheckOutlined style={{display: this.state.isShow ? "none" : "block"}}/>
                                     <img src={require('../../assets/imgs/themeimg/2.png')} alt=""/>
-                                
                                 </div>
                             </div>
                         </li>
@@ -106,7 +105,7 @@ class Drawers extends Component {
                                 >
                                 </SketchPicker>
                             </div> : null }
-                          
+
                         </li>
                     </ul>
                 </Drawer>
