@@ -43,7 +43,10 @@ class Login extends Component {
   onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  btnclick = (e) => {
+  componentDidMount() {
+      console.log(this.formRef)
+  }
+    btnclick = (e) => {
     this.formRef.current.resetFields();
   };
 

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./home.css";
 import {Layout, Menu} from "antd";
-import { Menus, Headers } from "../../components/index.js";
+import { Menus, Headers } from "@/components/index.js";
 import { Route } from "react-router-dom";
 // import { routes } from "/router/childrenroutes";
-import { routes } from "../../router/childrenroutes";
+import { routes } from "@/router/childrenroutes";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-
 import {observer, inject} from 'mobx-react'
 @inject('stylemain')
 @observer
