@@ -61,6 +61,7 @@ const data=[
         show: true,
         bordered:false,
         disabled:false,
+        Format:'YYYY/MM/DD',        //日期选择器时间格式
         id:8
     },
     {
@@ -77,6 +78,7 @@ const data=[
         show: true,
         bordered:false,
         disabled:false,
+        Format:'HH:mm:ss',        //日期选择器时间格式
         id:8
     },
     {
@@ -165,17 +167,19 @@ const data=[
         placeholder: "请输入描述",
         width:230,
         rule: [
+            {required: true, message: "必填项不能为空！"},
             {pattern: /^[^\s]*$/, message: "禁止输入空格"},
-            {pattern: /^.{1,200}$/, message: "最少输入位，最多输入200位"}
+            {pattern: /^.{1,10}$/, message: "最少输入位，最多输入200位"}
         ],
         iVal: "",
         disabled:false,
         id:13
     },
-    // {
-    //     type: "btn",
-    //     long: "long"
-    // }
+    
+    {
+        type: "button",
+        long: "long"
+    }
 ];
 
 

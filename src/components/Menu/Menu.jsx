@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Menu  } from "antd";
 import axios from 'axios'
 import {withRouter} from "react-router-dom";
-
+import './Menu.css'
 import {observer, inject} from "mobx-react";
 @inject('stylemain')
 @observer
