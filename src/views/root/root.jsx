@@ -18,32 +18,32 @@ import {
     Slider,
     Upload
 } from "antd";
-
+import './root.css'
 moment.locale('zh-cn');
-const layout={
+const layout = {
     labelCol: {span: 10},
     wrapperCol: {span: 14},
 };
-const tailLayout={
+const tailLayout = {
     wrapperCol: {offset: 10, span: 14},
 };
-const TextLayout={
+const TextLayout = {
     labelCol: {span: 10},
     wrapperCol: {span: 5},
 };
 
-const dateFormat='YYYY/MM/DD';
-
+const dateFormat = 'YYYY/MM/DD';        //日期选择器时间格式
+const format = 'HH:mm:ss';             //时间选择器时间格式
 class home extends Component {
-    formRef=React.createRef();
-    
+    formRef = React.createRef();
+
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             data: []
         };
     }
-    
+
     componentDidMount() {
         axios.get('/datalist').then(res => {
             console.log(res.data);
@@ -54,23 +54,24 @@ class home extends Component {
         // console.log(this.formRef);
         console.log(locale);
     }
-    
-    onSubmit=(val) => {
+
+    onSubmit = (val) => {
         // e.preventDefault();
         console.log(val)
     };
-    formreset=() => {
+    formreset = () => {
         this.formRef.current.resetFields();
     };
-    
+
     render() {
-        const {TextArea}=Input;
-        const {Option}=Select;
-        const CheckboxGroup=Checkbox.Group;
-        const {RangePicker}=DatePicker;
+        const {TextArea} = Input;
+        const {Option} = Select;
+        const CheckboxGroup = Checkbox.Group;
+        const {RangePicker} = DatePicker;
         return (
             <div className="">
                 <Form onFinish={this.onSubmit}
+                      autocomplete="off"
                       ref={this.formRef}
                       {...layout}
                 >
@@ -84,8 +85,12 @@ class home extends Component {
                                                    rules={item.rule}
                                                    key={i}
                                                    initialValue={item.iVal}
+
                                         >
-                                            <Input style={{width: item.width}} placeholder={item.placeholder}/>
+                                            <Input style={{width: item.width}}
+                                                   placeholder={item.placeholder}
+                                                   disabled={item.disabled}
+                                            />
                                         </Form.Item>
                                     );
                                 case 'numbertxt':
@@ -96,7 +101,9 @@ class home extends Component {
                                                    key={i}
                                                    initialValue={item.iVal}
                                         >
-                                            <InputNumber style={{width: item.width}} placeholder={item.placeholder}
+                                            <InputNumber style={{width: item.width}}
+                                                         placeholder={item.placeholder}
+                                                         disabled={item.disabled}
                                                          min={1}
                                                          max={101}/>
                                         </Form.Item>
@@ -108,7 +115,7 @@ class home extends Component {
                                                    key={i}
                                                    initialValue={item.iVal}
                                         >
-                                            <Radio.Group>
+                                            <Radio.Group disabled={item.disabled}>
                                                 {item.options.map((el, index) => (
                                                     <Radio value={el.key} key={index}>{el.name}</Radio>
                                                 ))}
@@ -118,13 +125,16 @@ class home extends Component {
                                     );
                                 case "text":
                                     return (
-                                        <Form.Item label={item.title} name={item.code} rules={item.rule}
+                                        <Form.Item label={item.title}
+                                                   name={item.code}
+                                                   rules={item.rule}
                                                    key={i} {...TextLayout}
                                                    initialValue={item.iVal}
                                         >
                                             <TextArea placeholder={item.placeholder} allowClear
                                                       autoSize={{minRows: 3, maxRows: 5}}
                                                       style={{width: item.width}}
+                                                      disabled={item.disabled}
                                             ></TextArea>
                                         </Form.Item>
                                     );
@@ -137,6 +147,7 @@ class home extends Component {
                                                    valuePropName='checked'
                                         >
                                             <Switch checkedChildren="开启" unCheckedChildren="关闭"
+                                                    disabled={item.disabled}
                                                     checked={item.iVal}
                                             ></Switch>
                                         </Form.Item>
@@ -149,6 +160,7 @@ class home extends Component {
                                                    initialValue={item.iVal}
                                         >
                                             <Select style={{width: item.width}} placeholder={item.placeholder}
+                                                    disabled={item.disabled}
                                                     allowClear>
                                                 {item.options.map(el => (
                                                     <Option key={el.key}>{el.name}</Option>
@@ -163,7 +175,7 @@ class home extends Component {
                                                    key={i}
                                                    initialValue={item.iVal}
                                         >
-                                            <CheckboxGroup>
+                                            <CheckboxGroup disabled={item.disabled}>
                                                 {item.options.map((el, index) => (
                                                     <Checkbox value={el.key} key={index}>{el.name}</Checkbox>
                                                 ))}
@@ -177,7 +189,7 @@ class home extends Component {
                                                    key={i}
                                                    initialValue={item.iVal}
                                         >
-                                            <Rate allowHalf/>
+                                            <Rate allowHalf disabled={item.disabled}/>
                                         </Form.Item>
                                     );
                                 case "slider":
@@ -187,7 +199,8 @@ class home extends Component {
                                                    key={i}
                                                    initialValue={item.iVal}
                                         >
-                                            <Slider min={item.min} max={item.max} style={{width: item.width}}/>
+                                            <Slider min={item.min} max={item.max} style={{width: item.width}}
+                                                    disabled={item.disabled}/>
                                         </Form.Item>
                                     );
                                 case "datepicker":
@@ -199,8 +212,22 @@ class home extends Component {
                                         >
                                             <RangePicker picker={item.picker}
                                                          allowClear
+                                                         // placeholder={item.placeholder}
                                                          locale={locale}
+                                                         disabled={item.disabled}
                                             />
+                                        </Form.Item>
+                                    );
+                                case "timepicker":
+                                    return (
+                                        <Form.Item label={item.title} name={item.code}
+                                                   rules={item.rule}
+                                                   key={i}
+                                                   initialValue={moment('12:08:23', format)}
+                                                   disabled={item.disabled}
+                                        >
+                                            <TimePicker allowClear placeholder={item.placeholder} locale={locale}
+                                                        disabled={item.disabled}/>
                                         </Form.Item>
                                     );
                                 default :

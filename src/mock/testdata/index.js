@@ -1,18 +1,4 @@
 import Mock from "mockjs";
-import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
-let date = new Date();
-let seperator1 = "-";
-let year = date.getFullYear();
-let month = date.getMonth() + 1;
-let strDate = date.getDate();
-if (month >= 1 && month <= 9) {
-    month = "0" + month;
-}
-if (strDate >= 0 && strDate <= 9) {
-    strDate = "0" + strDate;
-}
-var currentdate = year + seperator1 + month + seperator1 + strDate;
-
 const data=[
     {
         type: "radio",
@@ -28,6 +14,7 @@ const data=[
             {key:'2',name: '目录'},
             {key:'3',name: '按钮'},
         ],
+        disabled:false,
         id:1
     },
     {
@@ -43,7 +30,7 @@ const data=[
         ],
         iVal: "菜单名称",
         show: true,
-        disabled: false,
+        disabled:false,
         id:2
     },
     {
@@ -57,7 +44,7 @@ const data=[
         ],
         iVal: "8",
         show: true,
-        disabled: false,
+        disabled:false,
         id:8
     },
     {
@@ -73,7 +60,23 @@ const data=[
         picker:'date',           //date | week | mont |quarter  |year |
         show: true,
         bordered:false,
-        disabled: false,
+        disabled:false,
+        id:8
+    },
+    {
+        type: "timepicker",
+        title: "时间选择",
+        code: "timepicker",
+        width:230,
+        placeholder: "请选择时间",
+        rule: [
+            { required: true, message: '必填项不能为空!' },
+        ],
+        iVal: ["12:08"],
+        picker:'',           //date | week | mont |quarter  |year |
+        show: true,
+        bordered:false,
+        disabled:false,
         id:8
     },
     {
@@ -85,7 +88,7 @@ const data=[
         iVal: false,
         rule: [{required: true, message: "必填项不能为空！"}],
         show: true,
-        disabled: false,
+        disabled:false,
         id:9
     },
     {
@@ -100,7 +103,7 @@ const data=[
         width:230,
         max:100,
         vertical:true,
-        disabled: false,
+        disabled:false,
         id:9
     },
     {
@@ -111,8 +114,8 @@ const data=[
         iVal: "3.5",
         rule: [{required: true, message: "必填项不能为空！"}],
         show: true,
-        
-        disabled: false,
+
+        disabled:false,
         id:9
     },
     {
@@ -121,7 +124,7 @@ const data=[
         code: "Workingmeal",
         placeholder: "请选择工作餐",
         rule: [ {required: true, message: "必填项不能为空！"}],
-        
+
         options :[
             {key:'xcj',name:'乡村基'},
             {key:'mdl',name:'麦当劳'},
@@ -132,7 +135,7 @@ const data=[
         iVal: "dks",
         width:230,
         show: false,
-        disabled: false,
+        disabled:false,
         id:7
     },
     {
@@ -151,7 +154,7 @@ const data=[
         iVal: ['kl', 'xcd'],
         width:230,
         show: false,
-        disabled: false,
+        disabled:false,
         id:7
     },
     {
@@ -166,7 +169,7 @@ const data=[
             {pattern: /^.{1,200}$/, message: "最少输入位，最多输入200位"}
         ],
         iVal: "",
-        disabled: false,
+        disabled:false,
         id:13
     },
     // {

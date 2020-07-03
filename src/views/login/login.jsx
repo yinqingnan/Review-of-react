@@ -50,13 +50,14 @@ class Login extends Component {
     this.formRef.current.resetFields();
   };
 
-    
+
     render() {
     return (
       <div className="box" style={this.state.bg}>
         <div className="Login">
           <h2>系统登录</h2>
           <Form
+            autocomplete="off"
             ref={this.formRef}
             name="form"
             initialValues={{
