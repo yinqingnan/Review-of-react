@@ -18,7 +18,7 @@ class Menus extends Component {
   }
   componentDidMount() {
     axios.get('/navlist').then((res) => {
-        // console.log(res.data.data)
+        // console.log(res.data.data);
         this.setState({
             MenuList: this.renderMenu(res.data.data),
             navList:res.data.data
@@ -30,7 +30,7 @@ class Menus extends Component {
     let key = e.key;
     let arr = this.state.navList;
     let newarr = [];
-    var element = [];
+    let element = [];
     arr.forEach((item,index) => {
         newarr[index] = item;
         newarr[index].children.forEach( el =>{
@@ -61,10 +61,9 @@ class Menus extends Component {
       <div style={{ width: 200 }}>
         <Menu
             theme={this.props.stylemain.MenuTheme}
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={['6']}
+            defaultOpenKeys={['1']}
             mode="inline"
-           
             onClick={this.handleClick}
         >
             {this.state.MenuList}

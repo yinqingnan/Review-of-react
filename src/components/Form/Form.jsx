@@ -35,7 +35,7 @@ const TextLayout={
 // const format = 'HH:mm:ss';             //时间选择器时间格式
 class Forms extends Component {
     formRef=React.createRef();
-    
+
     constructor(props) {
         super(props);
         this.state={
@@ -43,7 +43,6 @@ class Forms extends Component {
         };
     }
     componentDidMount() {
-        // console.log(this.props.dataArr )
         this.props.dataArr.then(res =>{
             // console.log(res)
             this.setState({
@@ -51,13 +50,19 @@ class Forms extends Component {
             })
         })
     }
-    
+
     UNSAFE_componentWillReceiveProps() {
         // this.setState({
         //     data: this.props.dataArr
         // })
+        // this.props.dataArr.then(res =>{
+        //     // console.log(res)
+        //     this.setState({
+        //         data: res
+        //     })
+        // })
     }
-    
+
     onSubmit=(val) => {
         console.log('表格内数据:', val);
     };
@@ -65,7 +70,7 @@ class Forms extends Component {
         // 重置整个表格
         this.formRef.current.resetFields();
     };
-    
+
     render() {
         const {TextArea}=Input;
         const {Option}=Select;
@@ -88,7 +93,7 @@ class Forms extends Component {
                                                    rules={item.rule}
                                                    key={i}
                                                    initialValue={item.iVal}
-                                        
+
                                         >
                                             <Input style={{width: item.width}}
                                                    placeholder={item.placeholder}
@@ -245,7 +250,7 @@ class Forms extends Component {
                             }
                         })
                     }
-                
+
                 </Form>
             </div>
         );
